@@ -3,7 +3,7 @@ import './SingleArticle.css';
 
 const SingleArticle = ({ articles }) => {
   const { id } = useParams();
-  const singleArticle = articles.find(article => article.id === id) || {
+  const singleArticle = articles.find(article => +article.id === +id) || {
     id: 404,
     title: "Not found",
     body: "nothing",
@@ -11,7 +11,7 @@ const SingleArticle = ({ articles }) => {
   };
   return (
     <div className='singleArticle'>
-      <h1>{singleArticle.title}</h1>
+      <h1>{singleArticle?.title}</h1>
       <img
         src={singleArticle.imageUrl}
         alt={singleArticle.title}
